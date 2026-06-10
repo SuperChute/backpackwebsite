@@ -14,13 +14,34 @@
 body, html {
   margin: 0;
   padding: 0;
-  height: 100%; /* Locks the body to the window size */
+  min-height: 100%; /* Changed from fixed height */
   font-family: 'Inter', sans-serif;
   background: var(--bg-gradient);
   background-attachment: fixed;
   color: var(--primary);
   -webkit-font-smoothing: antialiased;
-  overflow: hidden; /* Prevents unwanted scrolling */
+  overflow-x: hidden; /* Prevents awkward side-to-side scrolling */
+  overflow-y: auto; /* UNLOCKS vertical scrolling! */
+}
+
+/* Smooth Entrance Animation */
+@keyframes slideUpFade {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+/* Container fills exactly 100% of the viewport height */
+.landing-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Changed from height: 100vh so it can expand */
+  width: 100vw;
+  animation: slideUpFade 0.8s ease-out forwards;
 }
 
 /* Smooth Entrance Animation */
