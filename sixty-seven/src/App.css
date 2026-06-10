@@ -1,0 +1,341 @@
+/* Import a sleek, modern font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;800&display=swap');
+
+:root {
+  --primary: #0f172a;
+  --accent: #2563eb;
+  --accent-glow: rgba(37, 99, 235, 0.4);
+  --bg-gradient: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%);
+  --glass-bg: rgba(255, 255, 255, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.8);
+  --text-muted: #64748b;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%; /* Locks the body to the window size */
+  font-family: 'Inter', sans-serif;
+  background: var(--bg-gradient);
+  background-attachment: fixed;
+  color: var(--primary);
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden; /* Prevents unwanted scrolling */
+}
+
+/* Smooth Entrance Animation */
+@keyframes slideUpFade {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+/* Container fills exactly 100% of the viewport height */
+.landing-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  animation: slideUpFade 0.8s ease-out forwards;
+}
+
+/* Frosted Glass Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 5%;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--glass-border);
+  flex-shrink: 0; /* Prevents navbar from squishing */
+  z-index: 100;
+}
+
+.navbar .logo {
+  font-size: 1.8rem;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  background: linear-gradient(90deg, #0f172a, #2563eb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.navbar nav a {
+  margin-left: 2.5rem;
+  text-decoration: none;
+  color: var(--text-muted);
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.navbar nav a:hover, .navbar nav a.active {
+  color: var(--primary);
+}
+
+.navbar nav a.active::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+/* Main Display Flexes to fill remaining screen space */
+.product-section {
+  flex: 1; /* Automatically expands to fill space below navbar */
+  display: flex;
+  align-items: center; /* Centers content vertically */
+  justify-content: center; /* Centers content horizontally */
+  width: 100%;
+  max-width: 1400px; /* Widened for a cinematic presentation feel */
+  margin: 0 auto;
+  padding: 2rem 5%;
+  box-sizing: border-box;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+  width: 100%;
+}
+
+/* The Main Product Stage */
+.image-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  height: 100%;
+  justify-content: center;
+}
+
+.main-stage {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: 1.5rem;
+  padding: 2vh 2vw; /* Scales padding based on screen size */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.main-stage:hover {
+  transform: translateY(-5px);
+}
+
+.main-product-img {
+  max-width: 100%;
+  height: 50vh; /* Image height scales perfectly to 50% of the screen */
+  object-fit: contain;
+  animation: float 6s ease-in-out infinite;
+  filter: drop-shadow(0 20px 20px rgba(0,0,0,0.15));
+}
+
+/* Interactive Thumbnails */
+.thumbnail-row {
+  display: flex;
+  gap: 1.2rem;
+  justify-content: center;
+}
+
+.thumb-btn {
+  background: var(--glass-bg);
+  border: 2px solid transparent;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  width: 8vh; /* Scales thumbnails dynamically */
+  height: 8vh;
+  min-width: 60px;
+  min-height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+}
+
+.thumb-btn img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s;
+}
+
+.thumb-btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+}
+
+.thumb-btn:hover img {
+  transform: scale(1.1);
+}
+
+.active-thumb {
+  border-color: var(--accent);
+  background: #ffffff;
+  box-shadow: 0 0 15px var(--accent-glow);
+}
+
+/* Product Typography & Metadata */
+.product-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.badge {
+  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+  color: #1d4ed8;
+  padding: 0.4rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  width: fit-content;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.15);
+}
+
+.product-details h1 {
+  font-size: clamp(2rem, 4vw, 3.5rem); /* Dynamically resizes font to fit screen */
+  font-weight: 800;
+  line-height: 1.1;
+  margin: 0 0 0.5rem 0;
+  letter-spacing: -0.03em;
+}
+
+.price {
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 800;
+  color: var(--accent);
+  margin: 0 0 1.5rem 0;
+  text-shadow: 0 4px 15px var(--accent-glow);
+}
+
+.description {
+  color: var(--text-muted);
+  line-height: 1.6;
+  font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+  margin-bottom: 2rem;
+}
+
+/* Fancy Tag Showcase */
+.tag-showcase {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 1rem;
+  padding: 1.25rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+}
+
+.tag-showcase h3 {
+  margin: 0 0 1rem 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.tag-wrapper {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.tag-preview {
+  width: 10vh; /* Scales dynamically */
+  height: 10vh;
+  min-width: 80px;
+  min-height: 80px;
+  object-fit: cover;
+  border-radius: 0.75rem;
+  border: 2px solid #ffffff;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.tag-preview:hover {
+  transform: rotate(5deg) scale(1.05);
+}
+
+.tag-meta p {
+  margin: 0.3rem 0;
+  font-size: clamp(0.8rem, 1vw, 0.95rem);
+  color: #334155;
+}
+
+.tag-meta strong {
+  color: var(--primary);
+}
+
+/* The Ultimate Buy Button */
+.buy-button {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  color: #ffffff;
+  border: none;
+  padding: 1.2rem 2.5rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 20px var(--accent-glow);
+  position: relative;
+  overflow: hidden;
+  align-self: flex-start; /* Keeps button from stretching */
+}
+
+.buy-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.buy-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 25px var(--accent-glow);
+}
+
+.buy-button:hover::before {
+  left: 100%;
+}
+
+/* Responsive adjustment for very small screens */
+@media (max-width: 900px) {
+  body, html {
+    overflow: auto; /* Allows scrolling on small screens if necessary */
+  }
+  .landing-container {
+    height: auto;
+  }
+  .grid-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .main-product-img {
+    height: 35vh;
+  }
+}
