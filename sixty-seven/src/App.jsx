@@ -54,6 +54,10 @@ function App() {
             <span className="badge">1st Place Demanded Daypack</span>
             <h1>The Ultimate Daypack</h1>
             <p className="price">$40.00</p>
+            
+            <p className="description">
+              Crafted for kids, loved by parents. Our daypack combines durability with the '67' trend, resonnating with the next generation of students. Perfect for school, adventures, and everything in between.
+            </p>
 
             {/* Visual Tag Feature Box */}
             <div className="tag-showcase">
