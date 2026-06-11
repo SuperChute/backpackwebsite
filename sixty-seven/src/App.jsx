@@ -52,14 +52,8 @@ function App() {
           {/* Right Column: Product and Price Metadata */}
           <div className="product-details">
             <span className="badge">1st Place Demanded Daypack</span>
-            <h1>The Ultimate Niche Daypack</h1>
+            <h1>The Ultimate Daypack</h1>
             <p className="price">$40.00</p>
-            
-            <p className="description">
-              Engineered specifically for optimal functionality, extreme comfort, and maximum daily value. 
-              Our clean minimalist layout strip-mines unnecessary production costs to deliver premium features 
-              without exceeding segment expectations.
-            </p>
 
             {/* Visual Tag Feature Box */}
             <div className="tag-showcase">
